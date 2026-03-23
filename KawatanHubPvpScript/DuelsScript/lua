@@ -29,6 +29,7 @@ txt.BackgroundTransparency = 1
 txt.Text = "Kawatan Hub"
 txt.TextScaled = true
 txt.TextColor3 = Color3.new(1,1,1)
+txt.Font = Enum.Font.GothamBold -- bold font
 
 local barBG = Instance.new("Frame", box)
 barBG.Size = UDim2.new(0.85,0,0,6)
@@ -59,6 +60,8 @@ label.Size = UDim2.new(1,0,1,0)
 label.BackgroundTransparency = 1
 label.TextColor3 = Color3.new(1,1,1)
 label.Text = "Kawatan Hub | FPS: 0 | PING: 0ms"
+label.Font = Enum.Font.GothamBold
+label.TextScaled = true
 
 -- FPS + PING dynamic
 local RunService = game:GetService("RunService")
@@ -80,6 +83,8 @@ speedText.Size = UDim2.new(1,0,0.4,0)
 speedText.Text = "Speed Customizer"
 speedText.BackgroundTransparency = 1
 speedText.TextColor3 = Color3.new(1,1,1)
+speedText.Font = Enum.Font.GothamBold
+speedText.TextScaled = true
 
 local speedBtn = Instance.new("TextButton", speedFrame)
 speedBtn.Position = UDim2.new(0.1,0,0.5,0)
@@ -87,6 +92,8 @@ speedBtn.Size = UDim2.new(0.8,0,0.4,0)
 speedBtn.Text = "ON"
 speedBtn.BackgroundColor3 = Color3.fromRGB(0,200,255)
 stroke(speedBtn)
+speedBtn.Font = Enum.Font.GothamBold
+speedBtn.TextScaled = true
 
 local speed = true
 speedBtn.MouseButton1Click:Connect(function()
@@ -120,6 +127,8 @@ autoText.Size = UDim2.new(1,0,0.4,0)
 autoText.Text = "Auto Play"
 autoText.BackgroundTransparency = 1
 autoText.TextColor3 = Color3.new(1,1,1)
+autoText.Font = Enum.Font.GothamBold
+autoText.TextScaled = true
 
 local autoBtn = Instance.new("TextButton", autoFrame)
 autoBtn.Position = UDim2.new(0.1,0,0.5,0)
@@ -127,6 +136,8 @@ autoBtn.Size = UDim2.new(0.8,0,0.4,0)
 autoBtn.Text = "PLAY"
 autoBtn.BackgroundColor3 = Color3.fromRGB(0,170,0)
 stroke(autoBtn)
+autoBtn.Font = Enum.Font.GothamBold
+autoBtn.TextScaled = true
 
 local playing = false
 autoBtn.MouseButton1Click:Connect(function()
@@ -147,6 +158,8 @@ lock.Position = UDim2.new(0.78,0,0.65,0)
 lock.Text = "LOCK"
 lock.BackgroundColor3 = Color3.fromRGB(0,200,255)
 stroke(lock)
+lock.Font = Enum.Font.GothamBold
+lock.TextScaled = true
 
 local locked = false
 lock.MouseButton1Click:Connect(function()
