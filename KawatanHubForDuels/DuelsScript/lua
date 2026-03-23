@@ -10,37 +10,44 @@ local function stroke(obj)
 	s.Parent = obj
 end
 
--- ================= LOADING =================
+-- ================= LOADING SCREEN =================
 local load = Instance.new("Frame", gui)
 load.Size = UDim2.new(1,0,1,0)
-load.BackgroundColor3 = Color3.fromRGB(0,200,255)
+load.BackgroundTransparency = 1
 
 local box = Instance.new("Frame", load)
-box.Size = UDim2.new(0,300,0,100)
-box.Position = UDim2.new(0.5,-150,0.5,-50)
-box.BackgroundColor3 = Color3.fromRGB(25,25,25)
-stroke(box)
+box.Size = UDim2.new(0,260,0,90)
+box.Position = UDim2.new(0.5,-130,0.5,-45)
+box.BackgroundColor3 = Color3.fromRGB(0,200,255)
+
+local corner = Instance.new("UICorner", box)
+corner.CornerRadius = UDim.new(0,10)
 
 local txt = Instance.new("TextLabel", box)
 txt.Size = UDim2.new(1,0,0.6,0)
+txt.BackgroundTransparency = 1
 txt.Text = "Kawatan Hub"
 txt.TextScaled = true
 txt.TextColor3 = Color3.new(1,1,1)
-txt.BackgroundTransparency = 1
 
-local bar = Instance.new("Frame", box)
-bar.Size = UDim2.new(0,0,0,8)
-bar.Position = UDim2.new(0.05,0,0.75,0)
-bar.BackgroundColor3 = Color3.fromRGB(0,200,255)
+local barBG = Instance.new("Frame", box)
+barBG.Size = UDim2.new(0.85,0,0,6)
+barBG.Position = UDim2.new(0.075,0,0.7,0)
+barBG.BackgroundColor3 = Color3.fromRGB(180,180,180)
 
-for i = 1,100 do
-	bar.Size = UDim2.new(i/100,0,0,8)
-	task.wait(0.05)
+local bar = Instance.new("Frame", barBG)
+bar.Size = UDim2.new(0,0,1,0)
+bar.BackgroundColor3 = Color3.fromRGB(255,255,255)
+
+-- 15 sec loading
+for i = 1,150 do
+	bar.Size = UDim2.new(i/150,0,1,0)
+	task.wait(0.1)
 end
 
 load:Destroy()
 
--- ================= TOP CENTER (FPS/PING) =================
+-- ================= TOP CENTER =================
 local top = Instance.new("Frame", gui)
 top.Size = UDim2.new(0,320,0,45)
 top.Position = UDim2.new(0.5,-160,0.08,0)
@@ -53,7 +60,7 @@ label.BackgroundTransparency = 1
 label.TextColor3 = Color3.new(1,1,1)
 label.Text = "Kawatan Hub | FPS: 0 | PING: 0ms"
 
--- FPS + PING dynamic
+-- FPS + PING
 local RunService = game:GetService("RunService")
 RunService.RenderStepped:Connect(function(dt)
 	local fps = math.floor(1/dt)
@@ -61,7 +68,7 @@ RunService.RenderStepped:Connect(function(dt)
 	label.Text = "Kawatan Hub | FPS: "..fps.." | PING: "..ping.."ms"
 end)
 
--- ================= SPEED CUSTOMIZER (TOP RIGHT) =================
+-- ================= SPEED CUSTOMIZER =================
 local speedFrame = Instance.new("Frame", gui)
 speedFrame.Size = UDim2.new(0,180,0,70)
 speedFrame.Position = UDim2.new(0.82,0,0.1,0)
