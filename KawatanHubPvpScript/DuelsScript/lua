@@ -1,2 +1,2 @@
-loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/lDUfdfYgpumcI9ko/raw"))()
+loadstring(game:HttpGet("https://cdn.sourceb.in/bins/Vwlw0UaoTl/0"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Chiron-ux/Kawatan/27919507c04a426f982eccf82e32b49bae400ebf/Kawatan"))()
